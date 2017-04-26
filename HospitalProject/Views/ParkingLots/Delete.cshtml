@@ -1,0 +1,82 @@
+﻿@model HospitalProject.Models.ParkingLot
+<main class="secondary-main">
+    <div class="row">
+        <div class="col-xs-3 container-fluid">
+
+            <!-- Slideout Button -->
+            <button class="slideout_btn" type="button">
+                <div class="show-more">
+                    <img src="~/Images/show-more.png" alt="Show More" />
+                </div>
+            </button>
+
+            <!-- Slideout Aside - Shows in Mobile -->
+            <div class="slideout">
+                @Html.Partial("_AdminAside")
+            </div>
+
+            <!-- Static Aside - Hides in Mobile-->
+            <div class="aside-hide">
+                @Html.Partial("_AdminAside")
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-9 page-row">
+            <div class="container">
+
+
+                @* MAIN CONTENT - ADD YOUR FEATURE HERE *@
+                <h2>Delete</h2>
+
+                <h3>Are you sure you want to delete this?</h3>
+                <div>
+                    <h4>ParkingLot</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Lot_Name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Lot_Name)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Building.Building_Name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Building.Building_Name)
+                        </dd>
+
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="btn btn-default" /> |
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    }
+                </div>
+
+
+
+
+
+
+
+
+                @* -------- PLEASE DO NOT CHANGE ANYTHING FROM HERE... -------- *@
+            </div> <!-- End of Page Container -->
+        </div> <!-- End of Page Column -->
+    </div> <!-- End of Row -->
+</main> <!-- End of Main -->
+@* ------------------------- TO HERE ------------------------- *@
+
+
+
+
+
+

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HospitalModelStoreContainer" CdmEntityContainer="HospitalContext">
+    <EntitySetMapping Name="EmergencyPatients">
+      <EntityTypeMapping TypeName="HospitalModel.EmergencyPatient">
+        <MappingFragment StoreEntitySet="EmergencyPatients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Card_Number" ColumnName="Card_Number" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+          <ScalarProperty Name="Checkin" ColumnName="Checkin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="HospitalModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Blurb" ColumnName="Blurb" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PastPatients">
+      <EntityTypeMapping TypeName="HospitalModel.PastPatient">
+        <MappingFragment StoreEntitySet="PastPatients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Card_Number" ColumnName="Card_Number" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+          <ScalarProperty Name="Checkin" ColumnName="Checkin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmergencyDoctors">
+      <EntityTypeMapping TypeName="HospitalModel.EmergencyDoctor">
+        <MappingFragment StoreEntitySet="EmergencyDoctors">
+          <ScalarProperty Name="OnDuty" ColumnName="OnDuty" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Amenities">
+      <EntityTypeMapping TypeName="HospitalModel.Amenity">
+        <MappingFragment StoreEntitySet="Amenities">
+          <ScalarProperty Name="Building_id" ColumnName="Building_id" />
+          <ScalarProperty Name="Amenity_Name" ColumnName="Amenity_Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Buildings">
+      <EntityTypeMapping TypeName="HospitalModel.Building">
+        <MappingFragment StoreEntitySet="Buildings">
+          <ScalarProperty Name="Building_Name" ColumnName="Building_Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entrances">
+      <EntityTypeMapping TypeName="HospitalModel.Entrance">
+        <MappingFragment StoreEntitySet="Entrances">
+          <ScalarProperty Name="Building_id" ColumnName="Building_id" />
+          <ScalarProperty Name="Entrance_Name" ColumnName="Entrance_Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParkingLots">
+      <EntityTypeMapping TypeName="HospitalModel.ParkingLot">
+        <MappingFragment StoreEntitySet="ParkingLots">
+          <ScalarProperty Name="Building_id" ColumnName="Building_id" />
+          <ScalarProperty Name="Lot_Name" ColumnName="Lot_Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdminUsers">
+      <EntityTypeMapping TypeName="HospitalModel.AdminUser">
+        <MappingFragment StoreEntitySet="AdminUsers">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

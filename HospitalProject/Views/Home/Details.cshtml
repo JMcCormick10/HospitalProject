@@ -1,0 +1,20 @@
+﻿
+@model HospitalProject.Models.News
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">@Html.DisplayFor(model => model.Title)</h1>
+    </div>
+    <div class="row">
+        <blockquote class="small text-left">@Html.DisplayFor(model => model.Blurb)</blockquote>
+    </div>
+    <div class="row">
+        <div class="text-center col-md-10 col-sm-10 col-xs-10  col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-sm-offset-1">
+            <img width="100%" class="img-responsive text-center" src="~/Images/@Model.Photo" />
+        </div>
+    </div>
+    &nbsp;
+    <div class="row">
+        <div class="col-md-10 col-sm-10 col-xs-10 text-center col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-sm-offset-1"> @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Content))</div>
+    </div>
+
+</div> 

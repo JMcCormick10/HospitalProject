@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HospitalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdminUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Last_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Amenities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Amenity_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Building_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Buildings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Building_Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmergencyDoctors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Last_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="OnDuty" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmergencyPatients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Last_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Card_Number" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Severity" Type="int" Nullable="false" />
+    <Property Name="Checkin" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Entrances">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Entrance_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Building_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Blurb" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Priority" Type="int" Nullable="false" />
+    <Property Name="Photo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ParkingLots">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Lot_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Building_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PastPatients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Last_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Card_Number" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Severity" Type="int" Nullable="false" />
+    <Property Name="Checkin" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Amenities_ToTable">
+    <End Role="Buildings" Type="Self.Buildings" Multiplicity="1" />
+    <End Role="Amenities" Type="Self.Amenities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buildings">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Amenities">
+        <PropertyRef Name="Building_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entrances_ToTable">
+    <End Role="Buildings" Type="Self.Buildings" Multiplicity="1" />
+    <End Role="Entrances" Type="Self.Entrances" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buildings">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Entrances">
+        <PropertyRef Name="Building_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParkingLots_ToTable">
+    <End Role="Buildings" Type="Self.Buildings" Multiplicity="1" />
+    <End Role="ParkingLots" Type="Self.ParkingLots" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buildings">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ParkingLots">
+        <PropertyRef Name="Building_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HospitalModelStoreContainer">
+    <EntitySet Name="AdminUsers" EntityType="Self.AdminUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Amenities" EntityType="Self.Amenities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Buildings" EntityType="Self.Buildings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmergencyDoctors" EntityType="Self.EmergencyDoctors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmergencyPatients" EntityType="Self.EmergencyPatients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Entrances" EntityType="Self.Entrances" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ParkingLots" EntityType="Self.ParkingLots" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PastPatients" EntityType="Self.PastPatients" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Amenities_ToTable" Association="Self.FK_Amenities_ToTable">
+      <End Role="Buildings" EntitySet="Buildings" />
+      <End Role="Amenities" EntitySet="Amenities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entrances_ToTable" Association="Self.FK_Entrances_ToTable">
+      <End Role="Buildings" EntitySet="Buildings" />
+      <End Role="Entrances" EntitySet="Entrances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParkingLots_ToTable" Association="Self.FK_ParkingLots_ToTable">
+      <End Role="Buildings" EntitySet="Buildings" />
+      <End Role="ParkingLots" EntitySet="ParkingLots" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

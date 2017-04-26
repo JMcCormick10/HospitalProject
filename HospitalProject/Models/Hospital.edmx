@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HospitalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Amenities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Amenity_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Building_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Buildings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Building_Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmergencyDoctors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnDuty" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmergencyPatients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Card_Number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Severity" Type="int" Nullable="false" />
+          <Property Name="Checkin" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Entrances">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Entrance_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Building_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Blurb" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Priority" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ParkingLots">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Lot_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Building_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PastPatients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Card_Number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Severity" Type="int" Nullable="false" />
+          <Property Name="Checkin" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Amenities_ToTable">
+          <End Role="Buildings" Type="Self.Buildings" Multiplicity="1" />
+          <End Role="Amenities" Type="Self.Amenities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Amenities">
+              <PropertyRef Name="Building_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entrances_ToTable">
+          <End Role="Buildings" Type="Self.Buildings" Multiplicity="1" />
+          <End Role="Entrances" Type="Self.Entrances" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Entrances">
+              <PropertyRef Name="Building_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParkingLots_ToTable">
+          <End Role="Buildings" Type="Self.Buildings" Multiplicity="1" />
+          <End Role="ParkingLots" Type="Self.ParkingLots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParkingLots">
+              <PropertyRef Name="Building_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HospitalModelStoreContainer">
+          <EntitySet Name="AdminUsers" EntityType="Self.AdminUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Amenities" EntityType="Self.Amenities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Buildings" EntityType="Self.Buildings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmergencyDoctors" EntityType="Self.EmergencyDoctors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmergencyPatients" EntityType="Self.EmergencyPatients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entrances" EntityType="Self.Entrances" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParkingLots" EntityType="Self.ParkingLots" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PastPatients" EntityType="Self.PastPatients" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Amenities_ToTable" Association="Self.FK_Amenities_ToTable">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="Amenities" EntitySet="Amenities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entrances_ToTable" Association="Self.FK_Entrances_ToTable">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="Entrances" EntitySet="Entrances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParkingLots_ToTable" Association="Self.FK_ParkingLots_ToTable">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="ParkingLots" EntitySet="ParkingLots" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HospitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EmergencyPatient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Card_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Severity" Type="Int32" Nullable="false" />
+          <Property Name="Checkin" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Blurb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Priority" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PastPatient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Card_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Severity" Type="Int32" Nullable="false" />
+          <Property Name="Checkin" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="HospitalContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EmergencyPatients" EntityType="Self.EmergencyPatient" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="PastPatients" EntityType="Self.PastPatient" />
+          <EntitySet Name="EmergencyDoctors" EntityType="HospitalModel.EmergencyDoctor" />
+          <EntitySet Name="Amenities" EntityType="HospitalModel.Amenity" />
+          <EntitySet Name="Buildings" EntityType="HospitalModel.Building" />
+          <EntitySet Name="Entrances" EntityType="HospitalModel.Entrance" />
+          <AssociationSet Name="FK_Amenities_ToTable" Association="HospitalModel.FK_Amenities_ToTable">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="Amenity" EntitySet="Amenities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entrances_ToTable" Association="HospitalModel.FK_Entrances_ToTable">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="Entrance" EntitySet="Entrances" />
+          </AssociationSet>
+          <EntitySet Name="ParkingLots" EntityType="HospitalModel.ParkingLot" />
+          <AssociationSet Name="FK_ParkingLots_ToTable" Association="HospitalModel.FK_ParkingLots_ToTable">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="ParkingLot" EntitySet="ParkingLots" />
+          </AssociationSet>
+          <EntitySet Name="AdminUsers" EntityType="HospitalModel.AdminUser" />
+          </EntityContainer>
+        <EntityType Name="EmergencyDoctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OnDuty" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Amenity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Amenity_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Building_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Building" Relationship="HospitalModel.FK_Amenities_ToTable" FromRole="Amenity" ToRole="Building" />
+        </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Building_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Amenities" Relationship="HospitalModel.FK_Amenities_ToTable" FromRole="Building" ToRole="Amenity" />
+          <NavigationProperty Name="Entrances" Relationship="HospitalModel.FK_Entrances_ToTable" FromRole="Building" ToRole="Entrance" />
+          <NavigationProperty Name="ParkingLots" Relationship="HospitalModel.FK_ParkingLots_ToTable" FromRole="Building" ToRole="ParkingLot" />
+        </EntityType>
+        <EntityType Name="Entrance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Entrance_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Building_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Building" Relationship="HospitalModel.FK_Entrances_ToTable" FromRole="Entrance" ToRole="Building" />
+        </EntityType>
+        <Association Name="FK_Amenities_ToTable">
+          <End Type="HospitalModel.Building" Role="Building" Multiplicity="1" />
+          <End Type="HospitalModel.Amenity" Role="Amenity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Amenity">
+              <PropertyRef Name="Building_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entrances_ToTable">
+          <End Type="HospitalModel.Building" Role="Building" Multiplicity="1" />
+          <End Type="HospitalModel.Entrance" Role="Entrance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Entrance">
+              <PropertyRef Name="Building_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ParkingLot">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Lot_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Building_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Building" Relationship="HospitalModel.FK_ParkingLots_ToTable" FromRole="ParkingLot" ToRole="Building" />
+        </EntityType>
+        <Association Name="FK_ParkingLots_ToTable">
+          <End Type="HospitalModel.Building" Role="Building" Multiplicity="1" />
+          <End Type="HospitalModel.ParkingLot" Role="ParkingLot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParkingLot">
+              <PropertyRef Name="Building_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HospitalModelStoreContainer" CdmEntityContainer="HospitalContext">
+          <EntitySetMapping Name="EmergencyPatients">
+            <EntityTypeMapping TypeName="HospitalModel.EmergencyPatient">
+              <MappingFragment StoreEntitySet="EmergencyPatients">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Card_Number" ColumnName="Card_Number" />
+                <ScalarProperty Name="Severity" ColumnName="Severity" />
+                <ScalarProperty Name="Checkin" ColumnName="Checkin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="HospitalModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Blurb" ColumnName="Blurb" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PastPatients">
+            <EntityTypeMapping TypeName="HospitalModel.PastPatient">
+              <MappingFragment StoreEntitySet="PastPatients">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Card_Number" ColumnName="Card_Number" />
+                <ScalarProperty Name="Severity" ColumnName="Severity" />
+                <ScalarProperty Name="Checkin" ColumnName="Checkin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmergencyDoctors">
+            <EntityTypeMapping TypeName="HospitalModel.EmergencyDoctor">
+              <MappingFragment StoreEntitySet="EmergencyDoctors">
+                <ScalarProperty Name="OnDuty" ColumnName="OnDuty" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Amenities">
+            <EntityTypeMapping TypeName="HospitalModel.Amenity">
+              <MappingFragment StoreEntitySet="Amenities">
+                <ScalarProperty Name="Building_id" ColumnName="Building_id" />
+                <ScalarProperty Name="Amenity_Name" ColumnName="Amenity_Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buildings">
+            <EntityTypeMapping TypeName="HospitalModel.Building">
+              <MappingFragment StoreEntitySet="Buildings">
+                <ScalarProperty Name="Building_Name" ColumnName="Building_Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entrances">
+            <EntityTypeMapping TypeName="HospitalModel.Entrance">
+              <MappingFragment StoreEntitySet="Entrances">
+                <ScalarProperty Name="Building_id" ColumnName="Building_id" />
+                <ScalarProperty Name="Entrance_Name" ColumnName="Entrance_Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParkingLots">
+            <EntityTypeMapping TypeName="HospitalModel.ParkingLot">
+              <MappingFragment StoreEntitySet="ParkingLots">
+                <ScalarProperty Name="Building_id" ColumnName="Building_id" />
+                <ScalarProperty Name="Lot_Name" ColumnName="Lot_Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminUsers">
+            <EntityTypeMapping TypeName="HospitalModel.AdminUser">
+              <MappingFragment StoreEntitySet="AdminUsers">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

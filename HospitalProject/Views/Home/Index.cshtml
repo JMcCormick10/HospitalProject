@@ -1,0 +1,87 @@
+﻿@model IEnumerable<HospitalProject.Models.News>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<main class="container-fluid">
+    <div class="row">
+    <div class="replace-image">
+        <img class="img-responsive col-xs-12 " src="~/Images/MGH2.JPG"/>
+    </div>
+        <!-- CAROUSEL -->
+        <div class="main__carousel">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- CAROUSEL CIRCLE INDICATORS -->
+                <ol class="carousel-indicators">
+                  <li data-target="myCarousel" data-slide-to="0 " class="active"></li>
+                   @{ int i = 1;
+                     foreach (var item in Model)
+                      {
+                       <li data-target="#myCarousel" data-slide-to="@i"></li>
+                       i++;
+                      }
+                    }       
+                </ol>       
+                <div class="carousel-inner">
+                   <div class="item active">
+                   <img src="../Images/MGH2.JPG" />
+                   <div class="carousel-inner__text">
+                     <h3>Welcome to Manitouwadge General Hospital</h3>
+                   </div>
+                 </div>
+                 @foreach (var item in Model) { 
+                     <div class="item">
+                           <img src="../Images/@Html.DisplayFor(modelItem => item.Photo)" />
+                           <div class="carousel-inner__text">
+                           <h3>@item.Title</h3>
+                           <p>@item.Blurb</p>
+                           <div class="large-link">@Html.ActionLink("View", "Details", new { id = item.Id }, new { @class = "large-link" })</div>
+                          </div>
+                     </div>
+                        }
+                </div>
+                <!-- CAROUSEL CONTROLS -->
+                <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+    </div> <!-- END OF CAROUSEL -->
+    
+
+    <div class="row home-icons">
+        <!-- HOME ICONS -->
+        <!-- ER WAIT TIMES -->
+        <div class="home-icons__column col-md-4 col-sm-12">
+                <div class="home-icons__border">
+                    <img class="home-icons__icon" src="~/Images/history-clock-button (2).png"/>
+
+                </div>
+                <h3>Emergency Wait Time: @ViewBag.WaitHours @ViewBag.Connect  @ViewBag.WaitMinutes @ViewBag.Close @ViewBag.noWait</h3>
+
+        </div>
+        <!-- FAQ -->
+        <div class="home-icons__column col-md-4 col-sm-6">
+            <div class="home-icons__border">
+                <img class="home-icons__icon" src="~/Images/question-sign.png" />
+            </div>
+            <h3>Have any questions?</h3>
+        </div>
+        <!-- DIRECTIONS -->
+        <div class="home-icons__column col-md-4 col-sm-6">
+            <a href="@Url.Action("Index", "Directions")">
+                <div class="home-icons__border">
+
+                    <img class="home-icons__icon" src="~/Images/car.png" />
+                </div>
+                <h3>Need directions?</h3>
+            </a>
+        </div>
+    </div> <!-- END OF HOME ICONS -->
+</main>
+
+

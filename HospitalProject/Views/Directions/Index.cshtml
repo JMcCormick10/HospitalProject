@@ -1,0 +1,90 @@
+﻿@model HospitalProject.Models.Amenity
+@* -------- PLEASE DO NOT CHANGE ANYTHING FROM HERE... -------- *@
+<main class="secondary-main">
+    <div class="row">
+        <div class="col-xs-2 container-fluid">
+
+            <!-- Slideout Button -->
+            <button class="slideout_btn" type="button">
+                <div class="show-more">
+                    <img src="~/Images/show-more.png" alt="Show More" />
+                </div>
+            </button>
+
+            <!-- Slideout Aside - Shows in Mobile -->
+            <div class="slideout">
+                @Html.Partial("_Aside")
+            </div>
+
+            <!-- Static Aside - Hides in Mobile-->
+            <div class="aside-hide">
+                @Html.Partial("_Aside")
+            </div>
+        </div>
+        <div class="col-md-10 col-sm-12 col-xs-12 page-row">
+            <div class="container">
+
+                @* PAGE TITLE - YOU MAY CHANGE THE TEXT OF PAGE TITLE *@
+                <h2 class="page-title">Directions</h2>
+                @* ------------------------- TO HERE ------------------------- *@
+
+                @* MAIN CONTENT - ADD YOUR FEATURE HERE *@
+
+                @using (Html.BeginForm())
+            {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <p>Select a service from the drop down below to get it's location, closest parking and entrances. You can also find directions to our hospital below.</p>
+
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.DropDownList("Amenity")
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Get information" class="btn btn-default" id="map-trigger" />
+                            </div>
+                        </div>
+                    </div>
+                }
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Building Location</th>
+                            <th>Parking</th>
+                            <th>Entrance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@ViewBag.AmenityName</td>
+                            <td>@ViewBag.Building</td>
+                            <td>@Html.Raw(@ViewBag.Parking)</td>
+                            <td>@Html.Raw(@ViewBag.Entrance)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2>Map</h2>
+                <div class="row">
+                    <div class="col-md-12" id="map"></div>
+                    <div class="col-md-12" id="directionsPanel"></div>
+                </div>
+
+
+                @* -------- PLEASE DO NOT CHANGE ANYTHING FROM HERE... -------- *@
+            </div> <!-- End of Page Container -->
+        </div> <!-- End of Page Column -->
+    </div> <!-- End of Row -->
+</main> <!-- End of Main -->
+@* ------------------------- TO HERE ------------------------- *@
+<script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH9iybmWScWDggwRR3k-kVghjDurD2IBw&callback=initializeMap">
+</script>
+
+
+

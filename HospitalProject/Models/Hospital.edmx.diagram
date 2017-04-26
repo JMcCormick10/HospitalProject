@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f67ede2ff225468ca12497f656c9f9d0" Name="Diagram1">
+        <EntityTypeShape EntityType="HospitalModel.EmergencyPatient" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.News" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.PastPatient" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalModel.EmergencyDoctor" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="HospitalModel.Amenity" Width="1.5" PointX="6" PointY="4.875" />
+        <EntityTypeShape EntityType="HospitalModel.Building" Width="1.5" PointX="3.75" PointY="5" />
+        <EntityTypeShape EntityType="HospitalModel.Entrance" Width="1.5" PointX="7.75" PointY="0.75" />
+        <AssociationConnector Association="HospitalModel.FK_Amenities_ToTable" />
+        <AssociationConnector Association="HospitalModel.FK_Entrances_ToTable" />
+        <EntityTypeShape EntityType="HospitalModel.ParkingLot" Width="1.5" PointX="6" PointY="8.125" />
+        <AssociationConnector Association="HospitalModel.FK_ParkingLots_ToTable" />
+        <EntityTypeShape EntityType="HospitalModel.AdminUser" Width="1.5" PointX="0.75" PointY="7.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

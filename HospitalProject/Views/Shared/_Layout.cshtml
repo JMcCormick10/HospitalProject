@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Six Pines General Hospital</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/script.js"></script>
+</head>
+<body>
+
+    @* HEADER *@
+    <header class="header">
+        <div class="container wrapper">
+            <div class="row">
+
+                @* SITE LOGO *@
+                <div class="col-sm-8 col-xs-7">
+                    <div class="header__logo">
+                        <a href="@Url.Action("Index", "Home")">
+                            <img class="header__full-image" src="~/Images/SPGH-Logo.png" alt="Manitouwadge General Hospital Logo" />
+                            <img class="header__stacked-image" src="~/Images/SPGH-Logo-stacked.png" alt="Manitouwadge General Hospital Logo" />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 col-xs-5 donate-menu">
+
+                    @* DONATE *@
+                    <div class="row">
+                        <div class="donateBox">
+                            <p>Make a difference.</p>
+                            <div class="header__donate">
+                                <a href="@Url.Action("Create", "Donate")" class="header__btn-donate btn btn-default btn-md btn-block">
+                                    Donate<span class="donate-today"> Today</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    @* HAMBURGER *@
+                    <div class="ham_btn row">
+                        <div class="col-xs-6">
+                            <p class="menu-title">Menu</p>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="hamburger">
+                                <div class="upper_line"></div>
+                                <div class="middle_line"></div>
+                                <div class="bottom_line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    @* HEADER NAVIGATION *@
+    <nav class="header-nav navigation">
+        <div class="wrapper container-fluid">
+            <ul>
+                <li><a class="single-line" href="@Url.Action("Index", "Home")">Home</a></li>
+                <li><a class="single-line">About</a></li>
+                <li><a>Patients <span class="mobile-block">&amp; Visitors</span></a></li>
+                <li><a>Our <span class="mobile-block">Services</span></a></li>
+                <li><a>News <span class="mobile-block">&amp; Events</span></a></li>
+                <li><a class="single-line">Fundraising</a></li>
+                <li><a class="single-line" href="@Url.Action("Index", "Directions")">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    @* MAIN *@
+    <div class="wrapper">
+        @RenderBody()
+    </div>
+
+
+    @* FOOTER NAVIGATION *@
+    <nav class="navigation">
+        <div class="wrapper">
+            <ul>
+                <li><a class="single-line">Home</a></li>
+                <li><a class="single-line">About</a></li>
+                <li><a>Patients <span class="mobile-block">&amp; Visitors</span></a></li>
+                <li><a>Our <span class="mobile-block">Services</span></a></li>
+                <li><a>News <span class="mobile-block">&amp; Events</span></a></li>
+                <li><a class="single-line">Fundraising</a></li>
+                <li><a class="single-line">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    @* FOOTER *@
+    <footer class="footer">
+        <div class="wrapper container">
+            <div class="row">
+                <div class="col-sm-4 footer__copyright">
+                    <p>&copy; Copyright @DateTime.Now.Year. Humber College</p>
+                    <p>Student Project. All rights reserved.</p>
+                </div>
+                <div class="col-sm-4 footer__extras">
+                    <h4 class="footer__title">Other Resources</h4>
+                    <ul class="list-unstyled">
+                        <li>@Html.ActionLink("Volunteers", "Index", "")</li>
+                        <li>@Html.ActionLink("Careers", "Index", "")</li>
+                        <li>@Html.ActionLink("Testimonials", "Index", "")</li>
+                        <li>@Html.ActionLink("Blog", "Index", "")</li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-4 footer__contact">
+                    <h4 class="footer__title">Contact Us</h4>
+                    <div class="address">
+                        <p>Humber College North Campus</p>
+                        <p>205 Humber College Blvd.,</p>
+                        <p>Toronto, Ontario</p>
+                        <p>M9W 5L7</p>
+                        <p>Email: bernard.monette@humber.ca</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/navigation.js"></script>
+    <script src="~/Scripts/slideout.js"></script>
+</body>
+</html>
+
+@*<div>Icons made by <a href="http://www.flaticon.com/authors/google" title="Google">Google</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>*@

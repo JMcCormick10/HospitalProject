@@ -1,0 +1,97 @@
+﻿@model IEnumerable<HospitalProject.Models.PastPatient>
+<main class="secondary-main">
+    <div class="row">
+        <div class="col-xs-3 container-fluid">
+
+            <!-- Slideout Button -->
+            <button class="slideout_btn" type="button">
+                <div class="show-more">
+                    <img src="~/Images/show-more.png" alt="Show More" />
+                </div>
+            </button>
+
+            <!-- Slideout Aside - Shows in Mobile -->
+            <div class="slideout">
+                @Html.Partial("_AdminAside")
+            </div>
+
+            <!-- Static Aside - Hides in Mobile-->
+            <div class="aside-hide">
+                @Html.Partial("_AdminAside")
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-9 page-row">
+            <div class="container">
+
+
+                @* MAIN CONTENT - ADD YOUR FEATURE HERE *@
+                <h4>Emergency Room Options</h4>
+            <div class="row">
+                <ul class="col-md-10 col-md-offset-2 nav nav-pills  ">
+                    <li>@Html.ActionLink("Manage ER Patients", "Index", "EmergencyPatients")</li>
+                    <li>@Html.ActionLink("Manage ER Doctors", "Index", "EmergencyDoctors")</li>
+                    <li class="active">@Html.ActionLink("View Past Patients", "Index", "PastPatients") </li>
+                </ul>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                    <h2 class="page-title">Past Patients</h2>
+
+
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.First_Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Last_Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Card_Number)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Severity)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Checkin)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.First_Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Last_Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Card_Number)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Severity)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Checkin)
+                                </td>
+                                <td>
+
+                                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+
+
+                @* -------- PLEASE DO NOT CHANGE ANYTHING FROM HERE... -------- *@
+            </div> <!-- End of Page Container -->
+        </div> <!-- End of Page Column -->
+    </div> <!-- End of Row -->
+</main> <!-- End of Main -->
+@* ------------------------- TO HERE ------------------------- *@
+

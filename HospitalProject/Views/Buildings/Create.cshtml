@@ -1,0 +1,67 @@
+﻿@model HospitalProject.Models.Building
+<main class="secondary-main">
+    <div class="row">
+        <div class="col-xs-3 container-fluid">
+
+            <!-- Slideout Button -->
+            <button class="slideout_btn" type="button">
+                <div class="show-more">
+                    <img src="~/Images/show-more.png" alt="Show More" />
+                </div>
+            </button>
+
+            <!-- Slideout Aside - Shows in Mobile -->
+            <div class="slideout">
+                @Html.Partial("_AdminAside")
+            </div>
+
+            <!-- Static Aside - Hides in Mobile-->
+            <div class="aside-hide">
+                @Html.Partial("_AdminAside")
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-9 page-row">
+            <div class="container">
+
+
+                @* MAIN CONTENT - ADD YOUR FEATURE HERE *@
+                <h2>Create</h2>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>Building</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Building_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Building_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Building_Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+
+               
+
+                @* -------- PLEASE DO NOT CHANGE ANYTHING FROM HERE... -------- *@
+            </div> <!-- End of Page Container -->
+        </div> <!-- End of Page Column -->
+    </div> <!-- End of Row -->
+</main> <!-- End of Main -->
+@* ------------------------- TO HERE ------------------------- *@
+
+

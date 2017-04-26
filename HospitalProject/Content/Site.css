@@ -1,0 +1,641 @@
+﻿
+/*----------------------------------
+--------------- INDEX --------------
+1. COLOURS
+2. GENERAL
+3. HEADER
+4. NAVIGATION
+5. FOOTER
+6. RESPONSIVE
+------------------------------------
+----------------------------------*/
+
+/*---------------------------
+---------- COLOURS ----------
+---------------------------*/
+
+/*light grey = #E6E7E8*/
+/*light blue = #7ECEFD*/
+/*dark blue = #2185C5*/
+/*dark grey = #58595B*/
+
+
+/*---------------------------
+---------- GENERAL ----------
+---------------------------*/
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+.wrapper {
+    max-width: 1024px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none;
+}
+.mobile-show{
+    display: none;
+}
+
+.glyphicon-inverse {
+    color: #fff;
+}﻿
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 100%;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    color: #58595B;
+}
+
+a {
+    color: #2185C5;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #58595B;
+    text-decoration: none;
+}
+
+/*---------------------------
+---------- HEADER -----------
+---------------------------*/
+
+.header {
+    min-height: 100px;
+    padding: 10px;
+    margin: 0;
+}
+
+.header__full-image, .header__stacked-image {
+    height: auto;
+    width: 80%;
+}
+
+.header__stacked-image {
+    display: none;
+}
+
+
+.header__btn-donate {
+    background-color: #58595B;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 10px;
+    border: none;
+}
+
+.header__btn-donate:hover {
+    background-color: #7ECEFD;
+}
+
+.header__btn-donate a {
+    color: #fff;
+}
+
+.header__btn-donate:hover a {
+    color: #333;
+}
+
+.donateBox {
+    padding: 10px;
+    border: 3px solid black;
+    text-align: center;
+    margin-top: 20px;
+    margin-right: 15px;
+}
+
+.donateBox p {
+    margin: 0;
+    font-size: 1.6em;
+}
+
+/*---------------------------
+-------- NAVIGATION ---------
+---------------------------*/
+.navigation {
+	width: 100%;
+	/*display: block;*/
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	text-transform: uppercase;
+	list-style: none;
+	background-color: #2285c6;
+}
+
+.navigation ul {
+	margin: 0;
+	padding: 0;
+}
+
+.navigation li {
+	height: auto;
+	line-height: 1.3em;
+	display: inline-block;
+	margin: 0 -2px;
+	padding: 0;
+	vertical-align: middle;
+}
+
+.navigation li a {
+	display: block;
+	margin: 0;
+	padding: 10px 1.3em;
+	color: #fff;
+}
+
+.navigation li a:hover, .navigation li a:active  {
+	width: auto;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.ham_btn {
+    background-color: #E6E7E8;
+    border: 2px solid black;
+    margin-top: 10px;
+    padding: 6px 8px;
+	display: none;
+}
+
+.ham_btn p {
+    color: #000;
+    font-size: 1.3em;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.ham_btn .col-xs-6 {
+    padding: 0;
+}
+
+.ham_btn:hover {
+    background-color: #7ECEFD;
+}
+
+.ham_btn:hover p {
+    color: #fff;
+}
+
+.ham_btn:hover .upper_line,
+.ham_btn:hover .middle_line,
+.ham_btn:hover .bottom_line {
+    background-color: #fff;
+}
+
+.hamburger {
+    width: 30px;
+	height: 25px;
+}
+
+.upper_line {
+	width: 30px;
+	height: 4px;
+	margin: 4px 0;
+	background-color: #000;
+    border-radius: 3px;
+}
+
+.middle_line {
+	width: 30px;
+	height: 4px;
+	margin: 4px 0;
+	background-color: #000;
+    border-radius: 3px;
+}
+
+.bottom_line {
+	width: 30px;
+	height: 4px;
+	margin: 4px 0;
+	background-color: #000;
+    border-radius: 3px;
+}
+
+/*---------------------------
+---------- FOOTER -----------
+---------------------------*/
+.footer {
+    background-color: #E6E7E8;
+    padding: 20px
+}
+
+.footer__title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.footer__contact p, .footer__copyright p {
+    margin-bottom: 0;
+}
+
+.footer__extras ul {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+
+}
+
+.footer__extras li a {
+    color: #2185C5;
+}
+
+/*---------------------------
+----------- MAIN ------------
+---------------------------*/
+
+.page-title {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.secondary-main {
+    overflow: hidden;
+}
+
+.page-row {
+    padding-right: 30px;
+}
+
+/*---------------------------
+----------- ASIDE -----------
+---------------------------*/
+.secondary-aside {
+    height: 502px; /* ------- CHANGE THIS IF YOU WANT THE ASIDE TO REACH THE BOTTOM OF YOUR PAGE - DESKTOP AND TABLET ONLY -------*/
+    background-color: #E6E7E8;
+    margin: 0;
+    padding: 0;
+}
+
+.secondary-aside h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 0;
+    padding: 20px 20px 0 0;
+    text-transform: uppercase;
+}
+
+.side-nav {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.side-nav li {
+    background-color: #7ECEFD;
+    padding: 10px 0 10px 40px;
+}
+
+/*------------------------------
+----------- SLIDEOUT -----------
+------------------------------*/
+
+.slideout_btn, .slideout {
+    display: none;
+}
+
+.slideout_btn {
+	background-color: #E6E7E8;
+	border-style: none;
+	padding: 8px 0;
+    float: left;
+    position: fixed;
+    top: 20px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    z-index: 100;
+}
+
+.slideout_btn:hover {
+    background-color: #7ECEFD;
+}
+
+.show-more img {
+    max-height: 15px;
+    width: auto;
+}
+
+.slideout {
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #E6E7E8;
+    color: #333;
+    height: 80%;
+    overflow: hidden;
+    position: fixed;
+    top: 56px;
+    left: -100%;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    z-index: 99;
+}
+
+.slideout.on {
+	z-index: 99;
+  	left: 0;
+}
+
+
+/*---------------------------
+-------- CAROUSEL ---------
+---------------------------*/   
+.main__carousel {
+    margin: 20px 0;
+    display: block;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.carousel{
+    background: #2f4357;
+    height: 400px;
+    overflow: hidden;
+}
+
+.carousel-inner {
+    position: relative;
+}
+
+.carousel .item {
+    height: 400px;
+}
+
+.carousel .item img {
+    width: 100%;
+    margin: 0 auto;
+    z-index: 9;
+}
+
+.carousel-inner__text {
+    
+    position: absolute;
+  top:0.1px;
+
+    z-index: 10;
+    background-color: white;
+    border-bottom-right-radius:0.5em;
+    opacity: 0.9;
+    padding-right: 250px;
+    padding-left: 30px;  
+    min-height:110px;  
+}
+/*this is to make the whole area with text an html action link*/
+.large-link { 
+    position:absolute;
+    top: 0.1px;
+    left:0.1px;
+    color: transparent;
+    padding-top:80px;
+    padding-right:85px;
+   
+}
+.large-link:hover{
+    color:transparent;
+}
+
+.carousel-inner__text h3, .carousel-inner__text p {
+    color: #2185C5;
+}
+
+.carousel-control .glyphicon {
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+}
+ 
+.carousel-indicators .active {
+    background-color: #7ECEFD;
+    border: none;
+}
+/*this is the image that will replace the carousel on smaller screen sizes. we need to initially hide it.*/
+.replace-image{
+    display: none;
+}
+
+/*---------------------------
+-------- HOME ICONS ---------
+---------------------------*/
+.home-icons {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.home-icons__column {
+    text-align: center;
+}
+
+.home-icons__column h3 {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.home-icons__border {
+    height: 190px;
+    width: 190px;
+    border: 6px solid #7ECEFD;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.home-icons__icon {
+    height: 70%;
+    width: 70%;
+    margin-top: 50%;
+    transform: translateY(-50%);
+}
+
+/*---------------------------
+-------- RESPONSIVE ---------
+---------------------------*/
+
+@media all and (max-width: 960px) {
+
+    .nav__main-navbar li a {
+        margin: inherit 5px;
+    }
+
+    .carousel{
+        background: #2f4357;
+        height: 350px;
+        overflow: hidden;
+    }
+
+    .carousel .item {
+        height: 350px;
+    }
+}
+
+@media all and (max-width: 768px) {
+    /*------- GLOBAL --------*/
+    .mobile-hide, .aside-hide, nav__main-navbar, .footer__nav {
+        display: none;
+    }
+
+    .mobile-block, header__full-image, .slideout_btn, .slideout {
+        display: block;
+    }
+
+    /*------- HEADER --------*/
+    .header__full-image {
+        width: 90%;
+    }
+
+    .donateBox {
+        margin: 0;
+    }
+
+    /*------- NAVIGATION --------*/
+    .navigation li .single-line {
+        line-height: 2.6em;
+    }
+
+    /*------- HOME MAIN --------*/
+    .home-icons__column:nth-child(1), .home-icons__column:nth-child(2) {
+        margin-bottom: 40px;
+    }
+
+
+    .carousel{
+        background: #2f4357;
+        height: 300px;
+        overflow: hidden;
+    }
+
+    .carousel .item {
+        height: 300px;
+    }
+
+    .footer__copyright, .footer__extras {
+        margin-bottom: 40px;
+    }
+
+    .footer__content {
+        margin-left: 10%;
+    }
+
+    
+    
+}
+
+@media all and (max-width: 520px) {
+
+    .carousel{
+        background: #2f4357;
+        height: 250px;
+        overflow: hidden;
+    }
+
+    .carousel .item {
+        height: 250px;
+    }
+}
+
+@media all and (max-width: 460px) {
+  
+    #myCarousel {
+        display: none;
+    }
+    .replace-image {
+        display: block;
+    }
+    .mobile-image {
+        display: block;
+        width: 98%;
+        padding-left: 5px
+    }
+}
+
+@media all and (max-width: 320px) {
+   /*------- GLOBAL --------*/
+    .aside-hide, .donate-today, .donateBox p, .navigation, .header__full-image, .mobile-hide, .footer__nav {
+        display: none;
+    }
+
+    .ham_btn, .navigation li, .header__stacked-image, .slideout_btn, .slideout {
+        display: block;
+    }
+
+    /*------- HEADER --------*/
+    .header__stacked-image {
+        height: auto;
+        width: 100%;
+    }
+
+    .donateBox {
+        border: none;
+        padding: 0;
+    }
+
+    .menu-title {
+        display: inline-block;
+        float: left;
+    }
+
+    .hamburger {
+        display: inline-block;
+        float: right;
+    }
+
+    /*------- NAVIGATION --------*/
+    .mobile-block {
+        display: inline;
+    }
+
+    .navigation li .single-line {
+        line-height: 1.3em;
+    }
+
+    /*Home Main*/
+
+    .carousel{
+        background: #2f4357;
+        height: 175px;
+        overflow: hidden;
+    }
+
+    .carousel .item {
+        height: 175px;
+    }
+}
+
+/*Josh's style
+*/
+.wait_time {
+    padding-top: 100px;
+}
+#map {
+    height: 380px;
+    width: 100% ;
+    border: 1px solid black ;
+}
+.large-link { 
+    position:absolute;
+    padding-right:400px;
+}
+#directionsPanel{
+    width: 100%
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
