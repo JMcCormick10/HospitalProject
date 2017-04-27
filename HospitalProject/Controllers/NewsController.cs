@@ -143,6 +143,7 @@ namespace HospitalProject.Controllers
                         db.Entry(news).State = EntityState.Modified;
                         db.SaveChanges();
                         var path = Path.Combine(Server.MapPath("~/Images/" + fileName));
+                        file.SaveAs(path);
                         return RedirectToAction("Index");
                     }
                 }
